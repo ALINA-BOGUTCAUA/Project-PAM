@@ -5,11 +5,9 @@
     android:background="#fde8d3">
 
     <!-- Верхний блок -->
-
-    <!-- Основная часть с карточками и статистикой -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="78dp"
+        android:layout_height="wrap_content"
         android:background="#ffdfba"
         android:gravity="center"
         android:orientation="vertical"
@@ -20,11 +18,12 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:lineSpacingExtra="4dp"
-            android:text="Мы всегда заботимся о вашем здоровье. Пожалуйста, заботьтесь и вы о нём."
+            android:text="Мы всегда заботимся о вашем здоровье. Пожалуйста, заботьтесь и вы о нём. Любите себя так, как любим мы вас."
             android:textColor="#333333"
             android:textSize="16sp" />
     </LinearLayout>
 
+    <!-- Основная часть -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -39,8 +38,8 @@
 
             <!-- Шаги -->
             <LinearLayout
-                android:layout_width="320dp"
-                android:layout_height="80dp"
+                android:layout_width="340dp"
+                android:layout_height="90dp"
                 android:orientation="horizontal"
                 android:padding="16dp"
                 android:layout_margin="12dp"
@@ -66,8 +65,8 @@
 
             <!-- Калории -->
             <LinearLayout
-                android:layout_width="320dp"
-                android:layout_height="80dp"
+                android:layout_width="340dp"
+                android:layout_height="90dp"
                 android:orientation="horizontal"
                 android:padding="16dp"
                 android:layout_margin="12dp"
@@ -93,8 +92,8 @@
 
             <!-- Расстояние -->
             <LinearLayout
-                android:layout_width="320dp"
-                android:layout_height="80dp"
+                android:layout_width="340dp"
+                android:layout_height="90dp"
                 android:orientation="horizontal"
                 android:padding="16dp"
                 android:layout_margin="12dp"
@@ -128,6 +127,8 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Здесь будет статистика"
                     android:textSize="18sp"
                     android:textColor="#555555"/>
@@ -143,6 +144,8 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Итог за неделю по установленной цели"
                     android:textSize="18sp"
                     android:textColor="#333333"/>
@@ -156,10 +159,11 @@
         android:id="@+id/navBar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#99ffffff"
+        android:background="#88ffffff"
         android:orientation="horizontal"
         android:gravity="center"
-        android:weightSum="3">
+        android:weightSum="3"
+        android:elevation="8dp">
 
         <TextView
             android:id="@+id/navHome"
