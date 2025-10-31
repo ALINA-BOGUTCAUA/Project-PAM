@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fde8d3">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Создание аккаунта"
+            android:textSize="22sp"
+            android:textColor="#333333"
+            android:gravity="center"
+            android:layout_marginBottom="24dp"
+            android:textStyle="bold"/>
+
+        <!-- Имя -->
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Имя"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@android:drawable/edit_text"/>
+
+        <!-- Email -->
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@android:drawable/edit_text"/>
+
+        <!-- Пол -->
+        <EditText
+            android:id="@+id/etGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Пол"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@android:drawable/edit_text"/>
+
+        <!-- Рост -->
+        <EditText
+            android:id="@+id/etHeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Рост (см)"
+            android:inputType="numberDecimal"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@android:drawable/edit_text"/>
+
+        <!-- Вес -->
+        <EditText
+            android:id="@+id/etWeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Вес (кг)"
+            android:inputType="numberDecimal"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@android:drawable/edit_text"/>
+
+        <!-- Лимит калорий -->
+        <EditText
+            android:id="@+id/etCalorieLimit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Лимит калорий"
+            android:inputType="number"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@android:drawable/edit_text"/>
+
+        <!-- Лимит шагов -->
+        <EditText
+            android:id="@+id/etStepLimit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Лимит шагов"
+            android:inputType="number"
+            android:padding="12dp"
+            android:layout_marginBottom="24dp"
+            android:background="@android:drawable/edit_text"/>
+
+        <!-- Кнопка регистрации -->
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Зарегистрироваться"
+            android:background="#ffdfba"
+            android:textColor="#333333"
+            android:textSize="18sp"
+            android:padding="12dp"/>
+    </LinearLayout>
+</ScrollView>

@@ -1,34 +1,47 @@
 package com.example.projectpam.model;
 
+/**
+ * Модель данных шагомера — хранит шаги, калории и расстояние.
+ * Не содержит кода Android (чистая логика).
+ */
 public class StepModel {
-    private int steps;
-    private double calories;
-    private double distance;
 
-    private final int targetSteps = 6000;
-    private final double targetCalories = 500;
+    private int steps = 0;
+    private double calories = 0.0;
+    private double distance = 0.0;
+
+    private static final double CALORIES_PER_STEP = 0.04; // ~0.04 ккал за шаг
+    private static final double STEP_LENGTH_METERS = 0.7; // средняя длина шага 70 см
 
     public void addStep() {
         steps++;
-        calculateCalories();
-        calculateDistance();
+        updateCalories();
+        updateDistance();
     }
 
-    private void calculateCalories() {
-        // ~0.04 ккал за шаг
-        this.calories = steps * 0.04;
+    private void updateCalories() {
+        calories = steps * CALORIES_PER_STEP;
     }
 
-    private void calculateDistance() {
-        // средняя длина шага 0.7 м → переводим в км
-        this.distance = steps * 0.7 / 1000.0;
+    private void updateDistance() {
+        distance = (steps * STEP_LENGTH_METERS) / 1000.0; // км
     }
 
-    public int getSteps() { return steps; }
-    public double getCalories() { return calories; }
-    public double getDistance() { return distance; }
+    public int getSteps() {
+        return steps;
+    }
 
-    public boolean isTargetReached() {
-        return steps >= targetSteps && calories >= targetCalories;
+    public double getCalories() {
+        return calories;
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void reset() {
+        steps = 0;
+        calories = 0.0;
+        distance = 0.0;
     }
 }
