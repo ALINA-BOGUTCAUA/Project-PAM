@@ -26,8 +26,6 @@ public class RegisterActivity extends AppCompatActivity {
         EditText etGender = findViewById(R.id.etGender);
         EditText etHeight = findViewById(R.id.etHeight);
         EditText etWeight = findViewById(R.id.etWeight);
-        EditText etCalorieLimit = findViewById(R.id.etCalorieLimit);
-        EditText etStepLimit = findViewById(R.id.etStepLimit);
         Button btnRegister = findViewById(R.id.btnRegister);
 
         btnRegister.setOnClickListener(v -> {
@@ -36,10 +34,8 @@ public class RegisterActivity extends AppCompatActivity {
             String gender = etGender.getText().toString();
             double height = Double.parseDouble(etHeight.getText().toString());
             double weight = Double.parseDouble(etWeight.getText().toString());
-            int calorieLimit = Integer.parseInt(etCalorieLimit.getText().toString());
-            int stepLimit = Integer.parseInt(etStepLimit.getText().toString());
 
-            userController.register(name, email, gender, height, weight, calorieLimit, stepLimit);
+            userController.register(name, email, gender, height, weight);
         });
     }
 }

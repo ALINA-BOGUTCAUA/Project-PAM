@@ -18,8 +18,8 @@ public class UserController {
     }
 
     // Регистрация
-    public void register(String name, String email, String gender, double height, double weight, int calorieLimit, int stepLimit) {
-        User user = new User(name, email, gender, height, weight, calorieLimit, stepLimit);
+    public void register(String name, String email, String gender, double height, double weight) {
+        User user = new User(name, email, gender, height, weight);
         boolean success = userModel.registerUser(user);
         if (success) {
             Toast.makeText(context, "Регистрация прошла успешно!", Toast.LENGTH_SHORT).show();

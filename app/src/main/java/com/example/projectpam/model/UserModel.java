@@ -1,4 +1,3 @@
-// UserModel.java
 package com.example.projectpam.model;
 
 import android.content.ContentValues;
@@ -10,27 +9,32 @@ import com.example.projectpam.data.DatabaseHelper;
 
 public class UserModel {
 
-    private DatabaseHelper dbHelper;
+    private final DatabaseHelper dbHelper;
 
     public UserModel(Context context) {
         dbHelper = new DatabaseHelper(context);
     }
 
-    // Регистрация пользователя
+    // --- Регистрация пользователя ---
     public boolean registerUser(User user) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-        // Проверяем, есть ли уже такой email
-        Cursor cursor = db.query(DatabaseHelper.TABLE_USER, null,
+        // Проверка на существующий email
+        Cursor cursor = db.query(DatabaseHelper.TABLE_USER,
+                null,
                 DatabaseHelper.COLUMN_EMAIL + "=?",
-                new String[]{user.getEmail()}, null, null, null);
+                new String[]{user.getEmail()},
+                null, null, null);
+
         if (cursor.getCount() > 0) {
             cursor.close();
             db.close();
-            return false; // Пользователь с таким email уже есть
+            return false; // Пользователь уже существует
         }
+
         cursor.close();
 
+        // Добавляем нового пользователя
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COLUMN_NAME, user.getName());
         values.put(DatabaseHelper.COLUMN_EMAIL, user.getEmail());
@@ -42,40 +46,51 @@ public class UserModel {
 
         long id = db.insert(DatabaseHelper.TABLE_USER, null, values);
         db.close();
+
         return id != -1;
     }
 
-    // Логин пользователя
+    // --- Авторизация пользователя ---
     public boolean login(String email) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.query(DatabaseHelper.TABLE_USER, null,
+
+        Cursor cursor = db.query(DatabaseHelper.TABLE_USER,
+                null,
                 DatabaseHelper.COLUMN_EMAIL + "=?",
-                new String[]{email}, null, null, null);
+                new String[]{email},
+                null, null, null);
+
         boolean exists = cursor.getCount() > 0;
         cursor.close();
         db.close();
+
         return exists;
     }
 
+    // --- Получение пользователя по email ---
     public User getUserByEmail(String email) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.query(DatabaseHelper.TABLE_USER, null,
-                DatabaseHelper.COLUMN_EMAIL + "=?",
-                new String[]{email}, null, null, null);
-        User user = null;
-        if (cursor.moveToFirst()) {
-            String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_NAME));
-            String gender = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_GENDER));
-            double height = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.COLUMN_HEIGHT));
-            double weight = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.COLUMN_WEIGHT));
-            int calorieLimit = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.COLUMN_CALORIE_LIMIT));
-            int stepLimit = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.COLUMN_STEP_LIMIT));
 
-            user = new User(name, email, gender, height, weight, calorieLimit, stepLimit);
+        Cursor cursor = db.query(DatabaseHelper.TABLE_USER,
+                null,
+                DatabaseHelper.COLUMN_EMAIL + "=?",
+                new String[]{email},
+                null, null, null);
+
+        User user = null;
+
+        if (cursor.moveToFirst()) {
+            String name = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_NAME));
+            String gender = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_GENDER));
+            double height = cursor.getDouble(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_HEIGHT));
+            double weight = cursor.getDouble(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_WEIGHT));
+
+            // Здесь лимиты пересчитаются автоматически внутри конструктора
+            user = new User(name, email, gender, height, weight);
         }
+
         cursor.close();
         db.close();
         return user;
     }
-
 }
