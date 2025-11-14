@@ -1,128 +1,331 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fde8d3">
+    android:background="#CAEFE2">
 
     <!-- Верхний блок -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:background="#ffdfba"
+        android:background="#D4F2E5"
+        android:gravity="center"
         android:orientation="vertical"
-        android:gravity="center">
+        android:padding="16dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Мы всегда заботимся о вашем здоровье. Пожалуйста, заботьтесь и вы о нём. Любите себя так, как любим мы вас."
-            android:textSize="16sp"
-            android:textColor="#333333"
             android:gravity="center"
-            android:lineSpacingExtra="4dp"/>
+            android:lineSpacingExtra="4dp"
+            android:text="Здравствуйте, юзер!"
+            android:textColor="#000000"
+            android:textSize="16sp" />
     </LinearLayout>
 
-    <!-- Карточки с шагами, калориями и расстоянием -->
-    <LinearLayout
-        android:orientation="vertical"
+    <!-- Основная часть -->
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:padding="20dp">
+        android:layout_weight="1">
 
-        <!-- Шаги -->
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp"
-            android:layout_margin="8dp"
-            android:background="@drawable/card_steps"
-            android:gravity="center_vertical"
-            android:elevation="4dp">
+            android:gravity="center_horizontal"
+            android:padding="16dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="👟"
-                android:textSize="24sp"
-                android:layout_marginEnd="10dp"/>
+            <!-- Шаги -->
+            <LinearLayout
+                android:layout_width="340dp"
+                android:layout_height="90dp"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:layout_margin="12dp"
+                android:background="@drawable/card_steps"
+                android:gravity="center_vertical"
+                android:elevation="6dp">
 
-            <TextView
-                android:id="@+id/stepsText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Шаги: 0"
-                android:textSize="22sp"
-                android:textColor="#ff5722"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="👟"
+                    android:textSize="28sp"
+                    android:layout_marginEnd="12dp"/>
+
+                <TextView
+                    android:id="@+id/stepsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Шаги: 0"
+                    android:textSize="22sp"
+                    android:textColor="#3AB896"/>
+            </LinearLayout>
+
+            <!-- Калории -->
+            <LinearLayout
+                android:layout_width="340dp"
+                android:layout_height="90dp"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:layout_margin="12dp"
+                android:background="@drawable/card_calories"
+                android:gravity="center_vertical"
+                android:elevation="6dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🔥"
+                    android:textSize="28sp"
+                    android:layout_marginEnd="12dp"/>
+
+                <TextView
+                    android:id="@+id/caloriesText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Калории: 0"
+                    android:textSize="22sp"
+                    android:textColor="#ff9800"/>
+            </LinearLayout>
+
+            <!-- Расстояние -->
+            <LinearLayout
+                android:layout_width="340dp"
+                android:layout_height="90dp"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:layout_margin="12dp"
+                android:background="@drawable/card_distance"
+                android:gravity="center_vertical"
+                android:elevation="6dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📏"
+                    android:textSize="28sp"
+                    android:layout_marginEnd="12dp"/>
+
+                <TextView
+                    android:id="@+id/distanceText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Расстояние: 0 км"
+                    android:textSize="22sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+
+            <!-- Блок статистики с круговыми прогресс-барами -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp"
+                android:layout_marginHorizontal="12dp"
+                android:background="#e8f0f2"
+                android:elevation="4dp"
+                android:clipToOutline="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Статистика"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#555555"
+                    android:layout_marginBottom="12dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:weightSum="2">
+
+                    <!-- Круговой прогресс шагов -->
+                    <FrameLayout
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_marginEnd="16dp">
+
+                        <com.google.android.material.progressindicator.CircularProgressIndicator
+                            android:id="@+id/progressSteps"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:indicatorSize="90dp"
+                            app:trackThickness="10dp"
+                            app:indicatorColor="#3AB896"
+                            app:trackColor="#C8E6C9"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvStepsProgress"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textColor="#3AB896"
+                                android:textSize="18sp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="шаги"
+                                android:textSize="12sp"
+                                android:textColor="#555555"/>
+                        </LinearLayout>
+                    </FrameLayout>
+
+                    <!-- Круговой прогресс калорий -->
+                    <FrameLayout
+                        android:layout_width="90dp"
+                        android:layout_height="90dp">
+
+                        <com.google.android.material.progressindicator.CircularProgressIndicator
+                            android:id="@+id/progressCalories"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:indicatorSize="90dp"
+                            app:trackThickness="10dp"
+                            app:indicatorColor="#FF9800"
+                            app:trackColor="#FFE0B2"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvCaloriesProgress"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textColor="#FF9800"
+                                android:textSize="18sp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ккал"
+                                android:textSize="12sp"
+                                android:textColor="#555555"/>
+                        </LinearLayout>
+                    </FrameLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Итог за неделю с мини-графиком -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginTop="20dp"
+                android:background="#dce7d8"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:elevation="4dp"
+                android:padding="16dp"
+                android:clipToOutline="true"
+                android:layout_marginHorizontal="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Итог за неделю"
+                    android:textSize="18sp"
+                    android:textColor="#333333"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="12dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:orientation="horizontal"
+                    android:gravity="bottom|center"
+                    android:weightSum="3">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal">
+
+                        <View
+                            android:layout_width="20dp"
+                            android:layout_height="50dp"
+                            android:background="#3AB896"
+                            android:layout_marginBottom="4dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="👟"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal">
+
+                        <View
+                            android:layout_width="20dp"
+                            android:layout_height="70dp"
+                            android:background="#FF9800"
+                            android:layout_marginBottom="4dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🔥"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal">
+
+                        <View
+                            android:layout_width="20dp"
+                            android:layout_height="40dp"
+                            android:background="#000000"
+                            android:layout_marginBottom="4dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="📏"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
-
-        <!-- Калории -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp"
-            android:layout_margin="8dp"
-            android:background="@drawable/card_calories"
-            android:gravity="center_vertical"
-            android:elevation="4dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="🔥"
-                android:textSize="24sp"
-                android:layout_marginEnd="10dp"/>
-
-            <TextView
-                android:id="@+id/caloriesText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Калории: 0"
-                android:textSize="22sp"
-                android:textColor="#ff9800"/>
-        </LinearLayout>
-
-        <!-- Расстояние -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp"
-            android:layout_margin="8dp"
-            android:background="@drawable/card_distance"
-            android:gravity="center_vertical"
-            android:elevation="4dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="📏"
-                android:textSize="24sp"
-                android:layout_marginEnd="10dp"/>
-
-            <TextView
-                android:id="@+id/distanceText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Расстояние: 0 км"
-                android:textSize="22sp"
-                android:textColor="#ffffff"/>
-        </LinearLayout>
-
-    </LinearLayout>
+    </ScrollView>
 
     <!-- Нижняя навигационная панель -->
     <LinearLayout
+        android:id="@+id/navBar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#daebe3"
+        android:background="@drawable/nav_bar_background"
         android:orientation="horizontal"
         android:gravity="center"
-        android:weightSum="3">
+        android:weightSum="3"
+        android:elevation="8dp">
 
         <TextView
             android:id="@+id/navHome"
@@ -132,15 +335,16 @@
             android:gravity="center"
             android:text="Главная"
             android:textSize="16sp"
-            android:textColor="#333333"/>
+            android:textColor="#ffffff"
+            android:background="#657166"/>
 
         <TextView
-            android:id="@+id/navRecommendations"
+            android:id="@+id/navMap"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Рекомендации"
+            android:text="Карта"
             android:textSize="16sp"
             android:textColor="#333333"/>
 
