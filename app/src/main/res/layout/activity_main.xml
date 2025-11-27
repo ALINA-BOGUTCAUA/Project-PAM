@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#CAEFE2">
 
-    <!-- Верхний блок -->
+    <!-- Верхний приветственный блок -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,7 +18,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:lineSpacingExtra="4dp"
             android:text="Здравствуйте, юзер!"
             android:textColor="#000000"
             android:textSize="16sp" />
@@ -28,25 +27,28 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:padding="16dp">
+            android:paddingHorizontal="16dp">
 
-            <!-- Шаги -->
+            <!-- Карточки шагов, калорий и расстояния -->
             <LinearLayout
                 android:layout_width="340dp"
                 android:layout_height="90dp"
                 android:orientation="horizontal"
                 android:padding="16dp"
-                android:layout_margin="12dp"
+                android:layout_marginVertical="6dp"
                 android:background="@drawable/card_steps"
                 android:gravity="center_vertical"
-                android:elevation="6dp">
+                android:elevation="6dp"
+                android:clipToOutline="true">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -64,16 +66,16 @@
                     android:textColor="#3AB896"/>
             </LinearLayout>
 
-            <!-- Калории -->
             <LinearLayout
                 android:layout_width="340dp"
                 android:layout_height="90dp"
                 android:orientation="horizontal"
                 android:padding="16dp"
-                android:layout_margin="12dp"
+                android:layout_marginVertical="6dp"
                 android:background="@drawable/card_calories"
                 android:gravity="center_vertical"
-                android:elevation="6dp">
+                android:elevation="6dp"
+                android:clipToOutline="true">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -88,19 +90,19 @@
                     android:layout_height="wrap_content"
                     android:text="Калории: 0"
                     android:textSize="22sp"
-                    android:textColor="#ff9800"/>
+                    android:textColor="#FF9800"/>
             </LinearLayout>
 
-            <!-- Расстояние -->
             <LinearLayout
                 android:layout_width="340dp"
                 android:layout_height="90dp"
                 android:orientation="horizontal"
                 android:padding="16dp"
-                android:layout_margin="12dp"
+                android:layout_marginVertical="6dp"
                 android:background="@drawable/card_distance"
                 android:gravity="center_vertical"
-                android:elevation="6dp">
+                android:elevation="6dp"
+                android:clipToOutline="true">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -126,8 +128,7 @@
                 android:orientation="vertical"
                 android:gravity="center"
                 android:padding="16dp"
-                android:layout_marginHorizontal="12dp"
-                android:background="#e8f0f2"
+                android:background="@drawable/card_statistics"
                 android:elevation="4dp"
                 android:clipToOutline="true">
 
@@ -147,7 +148,7 @@
                     android:gravity="center"
                     android:weightSum="2">
 
-                    <!-- Круговой прогресс шагов -->
+                    <!-- Прогресс шагов -->
                     <FrameLayout
                         android:layout_width="90dp"
                         android:layout_height="90dp"
@@ -186,7 +187,7 @@
                         </LinearLayout>
                     </FrameLayout>
 
-                    <!-- Круговой прогресс калорий -->
+                    <!-- Прогресс калорий -->
                     <FrameLayout
                         android:layout_width="90dp"
                         android:layout_height="90dp">
@@ -226,18 +227,17 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- Итог за неделю с мини-графиком -->
+            <!-- Итог за неделю -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 android:layout_marginTop="20dp"
-                android:background="#dce7d8"
+                android:background="@drawable/card_week_summary"
                 android:orientation="vertical"
                 android:gravity="center"
                 android:elevation="4dp"
                 android:padding="16dp"
-                android:clipToOutline="true"
-                android:layout_marginHorizontal="12dp">
+                android:clipToOutline="true">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -255,6 +255,7 @@
                     android:gravity="bottom|center"
                     android:weightSum="3">
 
+                    <!-- Мини-графики -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -265,7 +266,7 @@
                         <View
                             android:layout_width="20dp"
                             android:layout_height="50dp"
-                            android:background="#3AB896"
+                            android:background="@drawable/bar_steps"
                             android:layout_marginBottom="4dp"/>
                         <TextView
                             android:layout_width="wrap_content"
@@ -284,7 +285,7 @@
                         <View
                             android:layout_width="20dp"
                             android:layout_height="70dp"
-                            android:background="#FF9800"
+                            android:background="@drawable/bar_calories"
                             android:layout_marginBottom="4dp"/>
                         <TextView
                             android:layout_width="wrap_content"
@@ -303,7 +304,7 @@
                         <View
                             android:layout_width="20dp"
                             android:layout_height="40dp"
-                            android:background="#000000"
+                            android:background="@drawable/bar_distance"
                             android:layout_marginBottom="4dp"/>
                         <TextView
                             android:layout_width="wrap_content"
@@ -316,7 +317,7 @@
         </LinearLayout>
     </ScrollView>
 
-    <!-- Нижняя навигационная панель -->
+    <!-- Нижняя навигация -->
     <LinearLayout
         android:id="@+id/navBar"
         android:layout_width="match_parent"
@@ -336,7 +337,7 @@
             android:text="Главная"
             android:textSize="16sp"
             android:textColor="#ffffff"
-            android:background="#657166"/>
+            android:background="@drawable/nav_active_background"/>
 
         <TextView
             android:id="@+id/navMap"

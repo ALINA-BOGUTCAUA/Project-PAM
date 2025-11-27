@@ -1,50 +1,306 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:padding="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:background="#fde8d3">
+    android:background="#E0F7F4">
 
-    <TextView
-        android:id="@+id/tvName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Имя:" />
+    <!-- ScrollView с контентом профиля -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp"
+        android:paddingBottom="100dp"
+        android:clipToPadding="false">
 
-    <TextView
-        android:id="@+id/tvEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email:" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
 
-    <TextView
-        android:id="@+id/tvGender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Пол:" />
+            <!-- Аватар -->
+            <ImageView
+                android:id="@+id/imgAvatar"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/ic_profile_avatar"
+                android:scaleType="centerCrop"
+                android:background="@drawable/circle_white"
+                android:clipToOutline="true"
+                android:layout_marginBottom="24dp"/>
 
-    <TextView
-        android:id="@+id/tvHeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Рост:" />
+            <!-- Карточка данных профиля -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/rounded_card"
+                android:padding="20dp"
+                android:elevation="6dp"
+                android:layout_marginBottom="24dp">
 
-    <TextView
-        android:id="@+id/tvWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Вес:" />
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Имя: —"
+                    android:textSize="18sp"
+                    android:textColor="#2C7A73"
+                    android:layout_marginBottom="8dp"/>
 
-    <TextView
-        android:id="@+id/tvCalorieLimit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Лимит калорий:" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#DDDDDD"
+                    android:layout_marginBottom="8dp"/>
 
-    <TextView
-        android:id="@+id/tvStepLimit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Лимит шагов:" />
+                <TextView
+                    android:id="@+id/tvEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email: —"
+                    android:textSize="18sp"
+                    android:textColor="#2C7A73"
+                    android:layout_marginBottom="8dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#DDDDDD"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/tvGender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Пол: —"
+                    android:textSize="18sp"
+                    android:textColor="#2C7A73"
+                    android:layout_marginBottom="8dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#DDDDDD"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/tvHeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Рост: —"
+                    android:textSize="18sp"
+                    android:textColor="#2C7A73"
+                    android:layout_marginBottom="8dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#DDDDDD"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/tvWeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Вес: —"
+                    android:textSize="18sp"
+                    android:textColor="#2C7A73"
+                    android:layout_marginBottom="8dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#DDDDDD"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/tvCalorieLimit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Лимит калорий: —"
+                    android:textSize="18sp"
+                    android:textColor="#2C7A73"
+                    android:layout_marginBottom="8dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#DDDDDD"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/tvStepLimit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Лимит шагов: —"
+                    android:textSize="18sp"
+                    android:textColor="#2C7A73"/>
+            </LinearLayout>
+
+            <!-- Кнопка редактирования -->
+            <Button
+                android:id="@+id/btnEditProfile"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:text="Редактировать профиль"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:background="@drawable/btn_mint"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Планы -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_marginBottom="24dp">
+
+                <!-- Интенсивный -->
+                <LinearLayout
+                    android:id="@+id/planIntense"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@drawable/rounded_card"
+                    android:padding="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Интенсивный"
+                        android:textSize="16sp"
+                        android:textColor="#2C7A73"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="8dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ходьба 5 раз в неделю, тренировки 3 раза"
+                        android:textSize="14sp"
+                        android:textColor="#555555"
+                        android:gravity="center"
+                        android:layout_marginBottom="12dp"/>
+
+                    <Button
+                        android:id="@+id/btnSelectIntense"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:text="Выбрать ✓"
+                        android:textColor="#FFFFFF"
+                        android:background="@drawable/btn_mint"/>
+                </LinearLayout>
+
+                <!-- Желаемый -->
+                <LinearLayout
+                    android:id="@+id/planDesired"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@drawable/rounded_card"
+                    android:padding="16dp"
+                    android:layout_marginStart="8dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Желаемый"
+                        android:textSize="16sp"
+                        android:textColor="#2C7A73"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="8dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ходьба 3 раза в неделю, лёгкие тренировки"
+                        android:textSize="14sp"
+                        android:textColor="#555555"
+                        android:gravity="center"
+                        android:layout_marginBottom="12dp"/>
+
+                    <Button
+                        android:id="@+id/btnSelectDesired"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:text="Выбрать ✓"
+                        android:textColor="#FFFFFF"
+                        android:background="@drawable/btn_mint"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Выйти -->
+            <Button
+                android:id="@+id/btnLogout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Выйти"
+                android:textSize="18sp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/btn_orange"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- Удалить аккаунт -->
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Удалить аккаунт"
+                android:textSize="18sp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/btn_red"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Нижняя навигация -->
+    <LinearLayout
+        android:id="@+id/navBar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/nav_bar_background"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:weightSum="3"
+        android:elevation="8dp">
+
+        <TextView
+            android:id="@+id/navHome"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Главная"
+            android:textSize="16sp"
+            android:textColor="#ffffff"
+            android:background="@drawable/nav_active_background"/>
+
+        <TextView
+            android:id="@+id/navMap"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Карта"
+            android:textSize="16sp"
+            android:textColor="#333333"/>
+
+        <TextView
+            android:id="@+id/navAccount"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Аккаунт"
+            android:textSize="16sp"
+            android:textColor="#333333"/>
+    </LinearLayout>
+
 </LinearLayout>
